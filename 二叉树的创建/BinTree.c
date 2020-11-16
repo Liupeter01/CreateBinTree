@@ -41,7 +41,6 @@ void CreateBinTree(BinTree* T)          //二叉树的创建
 //当传入的str为NULL的时候采用手动输入，非NULL为自动2
 static void CreateBiTNode(BinTree* T, BinNode** p,const char *str)      
 {
-		  static int i = 0;
 		  ElemType data = 0;	  //输入的数据
 		  if (str == NULL)	  //手动输入
 		  {
@@ -49,14 +48,14 @@ static void CreateBiTNode(BinTree* T, BinNode** p,const char *str)
 		  }
 		  else
 		  {
-					data = str[i++];	//到下一个字符
+					data = *str;	//到下一个字符
 		  }
 
-		  //状态机设计模式，根据不同的输入切换不同的判断状态，具体效率???
+		  //状态机设计模式，根据不同的输入切换不同的判断状态，具体效率未知
 		  if ((str == NULL) ? (data != T->stopflag) : (data != T->stopflag && data != '\0'))				  
 		  {
 					*p = CreateBinNode(data);
-					CreateBiTNode(T, &((*p)->lchild), str);
-					CreateBiTNode(T, &((*p)->rchild), str);
+					CreateBiTNode(T, &((*p)->lchild), ++str);
+					CreateBiTNode(T, &((*p)->rchild), ++str);
 		  }
 }
