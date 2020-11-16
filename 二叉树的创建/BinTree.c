@@ -39,7 +39,7 @@ void CreateBinTree(BinTree* T)          //二叉树的创建
 
 //二叉树创建的核心递归函数，修改指针必须传入二级指针
 //当传入的str为NULL的时候采用手动输入，非NULL为自动2
-static void CreateBiTNode(BinTree* T, BinNode** p,char *str)      
+static void CreateBiTNode(BinTree* T, BinNode** p,const char *str)      
 {
 		  ElemType data = 0;	  //输入的数据
 		  if (str == NULL)	  //手动输入
