@@ -26,7 +26,7 @@ void DestroyBinTree(BinNode* p)         //二叉树的销毁
 		  }
 }
 
-void CreateBinTreeByString(BinTree* T, const char* str)          //根据字符串创建
+void CreateBinTreeByString(BinTree* T, char* str)          //根据字符串创建
 {
 		  CreateBiTNode(T, &(T->root), str);
 }
@@ -39,23 +39,28 @@ void CreateBinTree(BinTree* T)          //二叉树的创建
 
 //二叉树创建的核心递归函数，修改指针必须传入二级指针
 //当传入的str为NULL的时候采用手动输入，非NULL为自动2
-static void CreateBiTNode(BinTree* T, BinNode** p,const char *str)      
+static void CreateBiTNode(BinTree* T, BinNode** p,char *str)      
 {
 		  ElemType data = 0;	  //输入的数据
 		  if (str == NULL)	  //手动输入
 		  {
 					scanf("%c", &data);
+					if (data != T->stopflag)
+					{
+							  *p = CreateBinNode(data);
+							  CreateBiTNode(T, &((*p)->lchild), NULL);
+							  CreateBiTNode(T, &((*p)->rchild), NULL);
+					}
 		  }
 		  else
 		  {
-					data = *str;	//到下一个字符
-		  }
-
-		  //状态机设计模式，根据不同的输入切换不同的判断状态，具体效率未知
-		  if ((str == NULL) ? (data != T->stopflag) : (data != T->stopflag && data != '\0'))				  
-		  {
-					*p = CreateBinNode(data);
-					CreateBiTNode(T, &((*p)->lchild), ++str);
-					CreateBiTNode(T, &((*p)->rchild), ++str);
+					static int counter = 0;
+					data = str[counter++];	//到下一个字符
+					if (data != T->stopflag && data != '\0')
+					{
+							  *p = CreateBinNode(data);
+							  CreateBiTNode(T, &((*p)->lchild), str);
+							  CreateBiTNode(T, &((*p)->rchild), str);
+					}
 		  }
 }
