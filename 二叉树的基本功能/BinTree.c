@@ -111,14 +111,56 @@ BOOL isBinTreeEmpty(BinTree* T)        //判断二叉树是否为空
 
 }
 
-BinNode* SearchNode(BinTree* T, ElemType key)    //在二叉树中查找某一个数据是否存在
+BinNode* SearchNode(BinTree T, ElemType key)    //在二叉树中查找某一个数据是否存在
 {
-
+		  return _SearchNode(T.root, key);
 }
 
-BinNode* SearchParentNode(BinTree* T, BinNode* target)      //在二叉树中寻找某一个结点的父节点
+BinNode* _SearchNode(BinNode* T, ElemType key)   //在二叉树中查找某一个数据是否存在子函数
 {
+		  if (T == NULL)
+		  {
+					return T;
+		  }
+		  else if (T->data == key)	  //数为空树
+		  {
+					return T;
+		  }
+		  else
+		  {
+					BinNode *p = _SearchNode(T->lchild, key);
+					if (p != NULL)
+					{
+							  return p;
+					}
+					return _SearchNode(T->rchild, key);
+		  }
+}
 
+BinNode* SearchParentNode(BinTree T, BinNode* target)      //在二叉树中寻找某一个结点的父节点
+{
+		  return _SearchParentNode(T.root, target);
+}
+
+BinNode* _SearchParentNode(BinNode* T, BinNode* target)      //在二叉树中寻找某一个结点的父节点子函数
+{
+		  if (T == NULL || target == NULL)		  //二叉树为空，目标孩子结点也为空
+		  {
+					return NULL;
+		  }
+		  else if (T->lchild == target || T->rchild == target)
+		  {
+					return T; //返回双亲结点
+		  }
+		  else
+		  {
+					BinNode* p = _SearchParentNode(T->lchild, target);
+					if (p != NULL)
+					{
+							  return p;
+					}
+					return  _SearchParentNode(T->rchild, target);
+		  }
 }
 
 BinNode* SearchLeftChild(BinNode* target)       //寻找结点的左子树

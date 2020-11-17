@@ -42,8 +42,12 @@ int HeightBinTree(BinTree T);           //二叉树的高度
 int _HeightBinTree(BinNode* T);           //二叉树的高度子函数
 
 BOOL isBinTreeEmpty(BinTree* T);        //判断二叉树是否为空
-BinNode* SearchNode(BinTree* T, ElemType key);    //在二叉树中查找某一个数据是否存在
-BinNode* SearchParentNode(BinTree* T, BinNode* target);      //在二叉树中寻找某一个结点的父节点
+BinNode* SearchNode(BinTree T, ElemType key);    //在二叉树中查找某一个数据是否存在
+BinNode* _SearchNode(BinNode* T, ElemType key);    //在二叉树中查找某一个数据是否存在子函数
+
+BinNode* SearchParentNode(BinTree T, BinNode* target);      //在二叉树中寻找某一个结点的父节点
+BinNode* _SearchParentNode(BinNode* T, BinNode* target);      //在二叉树中寻找某一个结点的父节点子函数
+
 BinNode* SearchLeftChild(BinNode* target);        //寻找结点的左子树
 BinNode* SearchRightChild(BinNode* target);       //寻找结点的右子树
 void CopyBinTree(BinTree* T_1, BinTree* T_2);     //二叉树的拷贝
