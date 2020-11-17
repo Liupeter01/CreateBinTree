@@ -52,7 +52,11 @@ void PreOrderStack(BinTree T)			//前序遍历栈版本
 
 void _PreOrderStack(BinNode* T)		//前序遍历栈版本子程序
 {
+          if (T != NULL)         //T不为空
+          {
+                    BinNode* p = T;
 
+          }
 }
 
 void InOrderStack(BinTree T)   //中序遍历栈版本
@@ -62,27 +66,30 @@ void InOrderStack(BinTree T)   //中序遍历栈版本
 
 void _InOrderStack(BinNode* T)   //中序遍历栈版本
 {
-          LinkStack stack;
-          InitLinkStack(&stack);        //模拟栈的初始化操作
-
-          BinNode* p = T;
-          while (p!=NULL || !isEmpty(stack))      
+          if (T != NULL)         //T不为空
           {
-                    if (p!=NULL)        //右子树不存在
+                    LinkStack stack;
+                    InitLinkStack(&stack);        //模拟栈的初始化操作
+
+                    BinNode* p = T;
+                    while (p != NULL || !isEmpty(stack))
                     {
-                              Push_Stack(&stack, *p);
-                              p = p->lchild;
+                              if (p != NULL)        //右子树不存在
+                              {
+                                        Push_Stack(&stack, *p);
+                                        p = p->lchild;
+                              }
+                              else
+                              {
+                                        BinNode temp;
+                                        Pop_Stack(&stack, &temp); //开始出栈
+                                        printf("%c", temp.data);
+                                        BinNode* pointer = &temp;
+                                        p = pointer->rchild;    //访问右子树
+                              }
                     }
-                    else
-                    {
-                              BinNode temp;
-                              Pop_Stack(&stack, &temp); //开始出栈
-                              printf("%c", temp.data);
-                              BinNode* pointer = &temp;
-                              p = pointer->rchild;    //访问右子树
-                    }
+                    DestroyLinkStack(&stack);     //模拟栈的摧毁
           }
-          DestroyLinkStack(&stack);     //模拟栈的摧毁
 }
 
 void PostOrderStack(BinTree T)			//后序遍历栈版本
@@ -92,7 +99,10 @@ void PostOrderStack(BinTree T)			//后序遍历栈版本
 
 void _PostOrderStack(BinNode* T)		//后序遍历栈版本子程序
 {
+          if (T != NULL)         //T不为空
+          {
 
+          }
 }
 
 void LevelOrder(BinTree T)              //层次遍历
@@ -102,7 +112,7 @@ void LevelOrder(BinTree T)              //层次遍历
 
 void _LevelOrder(BinNode* T)			//层次遍历队列子程序
 {
-          if (T == NULL)         //树不可以为空，增加代码健壮性
+          if (T != NULL)         //树不可以为空，增加代码健壮性
           {
                     BinNode* p = T;
                     LinkQueue queue;
