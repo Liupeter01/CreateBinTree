@@ -26,6 +26,11 @@ void DestroyBinTree(BinNode* p)         //二叉树的销毁
 		  }
 }
 
+void ClearBinTree(BinTree* T)                    //二叉树的清除操作
+{
+
+}
+
 void CreateBinTreeByString(BinTree* T, char* str)          //根据字符串创建
 {
 		  CreateBiTNode(T, &(T->root), str);
@@ -63,4 +68,70 @@ static void CreateBiTNode(BinTree* T, BinNode** p,const char *str)
 							  CreateBiTNode(T, &((*p)->rchild), str);
 					}
 		  }
+}
+
+int SizeBinTree(BinTree T)           //二叉树的结点个数
+{
+		  return _SizeBinTree(T.root);
+}
+
+int _SizeBinTree(BinNode* p)         //结点个数子程序
+{
+		  if (p==NULL)			//到达了一个不存在的空结点返回0
+		  {
+					return 0;
+		  }
+		  else
+		  {
+					return _SizeBinTree(p->lchild) + _SizeBinTree(p->rchild) + 1;
+		  }
+}
+
+int HeightBinTree(BinTree T)           //二叉树的高度
+{
+		  return _HeightBinTree(T.root);
+}
+
+int _HeightBinTree(BinNode* T)          //二叉树的高度子函数
+{
+		  if (T == NULL)
+		  {
+					return 0;
+		  }
+		  else
+		  {
+					int leftheight = _HeightBinTree(T->lchild);					//左子树的高度
+					int rightheight = _HeightBinTree(T->rchild);				//右子树的高度
+					return (leftheight > rightheight ? leftheight : rightheight) + 1;	  //包含根
+		  }
+}
+
+BOOL isBinTreeEmpty(BinTree* T)        //判断二叉树是否为空
+{
+
+}
+
+BinNode* SearchNode(BinTree* T, ElemType key)    //在二叉树中查找某一个数据是否存在
+{
+
+}
+
+BinNode* SearchParentNode(BinTree* T, BinNode* target)      //在二叉树中寻找某一个结点的父节点
+{
+
+}
+
+BinNode* SearchLeftChild(BinNode* target)       //寻找结点的左子树
+{
+
+}
+
+BinNode* SearchRightChild(BinNode* target)      //寻找结点的右子树
+{
+
+}
+
+void CopyBinTree(BinTree* T_1, BinTree* T_2)     //二叉树的拷贝
+{
+
 }
