@@ -1,4 +1,4 @@
-#include"BinTree.h"
+#include"Order.h"
 
 int main()
 {
@@ -7,7 +7,11 @@ int main()
 
 		  char str[] = "ABC##DE##F##G#H##";
 		  CreateBinTreeByString(&T, str);		  //树的字符串创建
-		//   CreateBinTree(&T);			//树的手动创建
+		  InOrder(T);
+		  printf("\n");
+
+		  InOrderStack(T);
+		  printf("\n");
 		  DestroyBinTree(T.root);
 		  return 0;
 }

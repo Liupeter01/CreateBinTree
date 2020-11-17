@@ -22,7 +22,7 @@ void DestroyBinTree(BinNode* p)         //¶þ²æÊ÷µÄÏú»Ù
 					BinNode* ptemp = p;
 					DestroyBinTree(p->lchild);
 					DestroyBinTree(p->rchild);
-					free(p);
+					free(ptemp);
 		  }
 }
 

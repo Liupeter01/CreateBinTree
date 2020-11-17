@@ -21,9 +21,21 @@
     <ClCompile Include="BinTree.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Order.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkStack.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinTree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Order.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkStack.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
