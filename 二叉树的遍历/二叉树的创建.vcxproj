@@ -141,12 +141,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BinTree.c" />
+    <ClCompile Include="LinkQueue.c" />
     <ClCompile Include="LinkStack.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="Order.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinTree.h" />
+    <ClInclude Include="LinkQueue.h" />
     <ClInclude Include="LinkStack.h" />
     <ClInclude Include="Order.h" />
   </ItemGroup>

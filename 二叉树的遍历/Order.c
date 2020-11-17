@@ -75,24 +75,12 @@ void _InOrderStack(BinNode* T)   //中序遍历栈版本
           DestroyLinkStack(&stack);     //模拟栈的摧毁
 }
 
+void LevelOrder(BinTree T)              //层次遍历
+{
+          _LevelOrder(T.root);          //调用子程序
+}
 
-///*层次遍历*/
-//void LevelOrder(BiTree T)
-//{
-//          LinkQueue queue;
-//          BiTree P = T;
-//          EnQueue(&queue, *P);  //先将根节点入队
-//          while (!IsQueueEmpty(queue))   //链式队列不为空
-//          {
-//                    DeQueue(&queue, P);                //将节点出队
-//                    printf("%d", P->data);
-//                    if (P->lchild != NULL)         //将左节点入队 
-//                    {
-//                              EnQueue(&queue, *(P->lchild));
-//                    }
-//                    if (P->rchild != NULL)        //将右节点入队 
-//                    {
-//                              EnQueue(&queue, (*P->rchild));
-//                    }
-//          }
-//}
+void _LevelOrder(BinNode* T)			//层次遍历队列子程序
+{
+
+}

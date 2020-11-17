@@ -18,7 +18,7 @@ BOOL isEmpty(LinkStack lstack)		// 判空操作
 		  return lstack->next == NULL;			  //只有一个头结点
 }
 
-int length(LinkStack lstack)	//求栈的大小
+int Stacklength(LinkStack lstack)	//求栈的大小
 {
 		  StackNode* p = lstack->next;
 		  int counter = 0;
@@ -30,7 +30,7 @@ int length(LinkStack lstack)	//求栈的大小
 		  return counter;
 }
 
-ElemTypeStack GetTop(LinkStack lstack)//获得栈顶元素
+ElemTypeStack GetStackTop(LinkStack lstack)//获得栈顶元素
 {
 		  return (lstack->next->data);
 }
