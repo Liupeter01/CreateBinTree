@@ -82,22 +82,25 @@ void LevelOrder(BinTree T)              //层次遍历
 
 void _LevelOrder(BinNode* T)			//层次遍历队列子程序
 {
-          BinNode* p = T;
-          LinkQueue queue;
-          InitLinkQueue(&queue);        //队列的初始化
-          EnQueue(&queue, *p);          //先将顶点入队
-          while (!IsQueueEmpty(queue))            //判断队列是都为满
+          if (T == NULL)         //树不可以为空，增加代码健壮性
           {
-                    DeQueue(&queue, p);
-                    printf("%c", p->data);        
-                    if (p->lchild != NULL)        //左子树不为空
+                    BinNode* p = T;
+                    LinkQueue queue;
+                    InitLinkQueue(&queue);        //队列的初始化
+                    EnQueue(&queue, *p);          //先将顶点入队
+                    while (!IsQueueEmpty(queue))            //判断队列是都为满
                     {
-                              EnQueue(&queue, *(p->lchild));          //先将顶点入队
+                              DeQueue(&queue, p);
+                              printf("%c", p->data);
+                              if (p->lchild != NULL)        //左子树不为空
+                              {
+                                        EnQueue(&queue, *(p->lchild));          //先将顶点入队
+                              }
+                              if (p->rchild != NULL)        //右子树不为空
+                              {
+                                        EnQueue(&queue, *(p->rchild));          //先将顶点入队
+                              }
                     }
-                    if (p->rchild != NULL)        //右子树不为空
-                    {
-                              EnQueue(&queue, *(p->rchild));          //先将顶点入队
-                    }
+                    DestroyLinkQueue(&queue);
           }
-          DestroyLinkQueue(&queue);
 }
