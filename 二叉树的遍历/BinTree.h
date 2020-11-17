@@ -27,9 +27,8 @@ BinNode* CreateBinNode(ElemType x);               //二叉树的结点创建函数
 void InitBinTree(BinTree* T, ElemType stopflag);            //二叉树的初始化
 void DestroyBinTree(BinNode* p);         //二叉树的销毁
 
+/*二叉树的创建*/
 void CreateBinTreeByString(BinTree* T, char* str);          //根据字符串创建
 void CreateBinTree(BinTree *T);          //二叉树的创建的外层函数
-
-//二叉树创建的核心递归函数，修改指针必须传入二级指针
-//当传入的str为NULL的时候采用手动输入，非NULL为自动
-static void CreateBiTNode(BinTree* T, BinNode** p, const char* str);
+static void CreateBiTNode(BinTree* T, BinNode** p, const char* str);  //二叉树创建函数
+/*当传入的str为NULL的时候采用手动输入，非NULL为自动*/
