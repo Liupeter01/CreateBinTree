@@ -1,6 +1,6 @@
 #include"Order.h"
 
-void PreOrder(BinTree T)      //先序遍历
+void PreOrder(BinTree T)      //先序遍历递归版本
 {
           _PreOrder(T.root);  //调用子模块
 }
@@ -15,7 +15,7 @@ void _PreOrder(BinNode* T)     //先序遍历子模块
           }
 }
 
-void InOrder(BinTree T)                 //中序遍历
+void InOrder(BinTree T)                 //中序遍历递归版本
 {
           _InOrder(T.root);    //调用子模块
 }
@@ -30,7 +30,7 @@ void _InOrder(BinNode* T)                 //中序遍历子模块
           }
 }
 
-void PostOrder(BinTree T)               //后序遍历
+void PostOrder(BinTree T)               //后序遍历递归版本
 {
           _PostOrder(T.root);  //调用子模块7
 }
@@ -43,6 +43,16 @@ void _PostOrder(BinNode* T)             //后序遍历子模块
                     _PostOrder(T->rchild);          //再去右子树
                     printf("%c", T->data);        //先输出节点的值
           }
+}
+
+void PreOrderStack(BinTree T)			//前序遍历栈版本
+{
+          _PreOrderStack(T.root);       //调用子函数
+}
+
+void _PreOrderStack(BinNode* T)		//前序遍历栈版本子程序
+{
+
 }
 
 void InOrderStack(BinTree T)   //中序遍历栈版本
@@ -73,6 +83,16 @@ void _InOrderStack(BinNode* T)   //中序遍历栈版本
                     }
           }
           DestroyLinkStack(&stack);     //模拟栈的摧毁
+}
+
+void PostOrderStack(BinTree T)			//后序遍历栈版本
+{
+          _PostOrderStack(T.root);      //调用子函数
+}
+
+void _PostOrderStack(BinNode* T)		//后序遍历栈版本子程序
+{
+
 }
 
 void LevelOrder(BinTree T)              //层次遍历
