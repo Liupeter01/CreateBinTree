@@ -15,20 +15,36 @@ void InitBinTree(BinTree* T, ElemType stopflag)        //¶ş²æÊ÷µÄ³õÊ¼»¯
 		  T->stopflag = stopflag;				  //ÒÔstopflag×÷Îª³ÌĞòµÄ½áÊø·ûºÅ
 }
 
-void DestroyBinTree(BinNode* p)         //¶ş²æÊ÷µÄÏú»Ù
+void DestroyBinTree(BinTree p)			//¶ş²æÊ÷µÄÏú»Ù
+{
+		  _DestroyBinTree(p.root);
+}
+
+void _DestroyBinTree(BinNode* p)         //¶ş²æÊ÷µÄÏú»Ù×Óº¯Êı
 {
 		  if (p->lchild != NULL && p->rchild != NULL)
 		  {
 					BinNode* ptemp = p;
-					DestroyBinTree(p->lchild);
-					DestroyBinTree(p->rchild);
+					_DestroyBinTree(p->lchild);
+					_DestroyBinTree(p->rchild);
 					free(ptemp);
 		  }
 }
 
-void ClearBinTree(BinTree* T)                    //¶ş²æÊ÷µÄÇå³ı²Ù×÷
+void ClearBinTree(BinTree T)                    //¶ş²æÊ÷µÄÇå³ı²Ù×÷
 {
+		  _ClearBinTree(T.root);
+}
 
+void _ClearBinTree(BinNode* T)					  //¶ş²æÊ÷µÄÇå³ş²Ù×÷×Óº¯Êı
+{
+		  if (T != NULL)
+		  {
+					_ClearBinTree(T->lchild);
+					_ClearBinTree(T->rchild);
+					free(T);
+					T = NULL;
+		  }
 }
 
 void CreateBinTreeByString(BinTree* T, char* str)          //¸ù¾İ×Ö·û´®´´½¨
@@ -106,9 +122,9 @@ int _HeightBinTree(BinNode* T)          //¶ş²æÊ÷µÄ¸ß¶È×Óº¯Êı
 		  }
 }
 
-BOOL isBinTreeEmpty(BinTree* T)        //ÅĞ¶Ï¶ş²æÊ÷ÊÇ·ñÎª¿Õ
+BOOL isBinTreeEmpty(BinTree T)        //ÅĞ¶Ï¶ş²æÊ÷ÊÇ·ñÎª¿Õ
 {
-
+		  return (T.root == NULL);
 }
 
 BinNode* SearchNode(BinTree T, ElemType key)    //ÔÚ¶ş²æÊ÷ÖĞ²éÕÒÄ³Ò»¸öÊı¾İÊÇ·ñ´æÔÚ
@@ -165,15 +181,29 @@ BinNode* _SearchParentNode(BinNode* T, BinNode* target)      //ÔÚ¶ş²æÊ÷ÖĞÑ°ÕÒÄ³Ò
 
 BinNode* SearchLeftChild(BinNode* target)       //Ñ°ÕÒ½áµãµÄ×ó×ÓÊ÷
 {
-
+		  return ((target != NULL) ? target->lchild : NULL);
 }
 
 BinNode* SearchRightChild(BinNode* target)      //Ñ°ÕÒ½áµãµÄÓÒ×ÓÊ÷
 {
-
+		  return ((target != NULL) ? target->rchild : NULL);
 }
 
-void CopyBinTree(BinTree* T_1, BinTree* T_2)     //¶ş²æÊ÷µÄ¿½±´
+void CopyBinTree(BinTree *T_1, BinTree T_2)     //¶ş²æÊ÷µÄ¿½±´½«T2¿½±´µ½T1
 {
+		  _CopyBinTree(&(T_1->root), T_2.root);	  //µ÷ÓÃ×Óº¯Êı
+}
 
+void _CopyBinTree(BinNode** T1, BinNode* T2)     //¶ş²æÊ÷µÄ¿½±´×Óº¯Êı
+{
+		  if (T2 == NULL)	  //T2²»´æÔÚT1Ò²²»´æÔÚ
+		  {
+					T1 = NULL;			
+		  }
+		  else
+		  {
+					*T1 = CreateBinNode(T2->data);
+					_CopyBinTree(&((*T1)->lchild), T2->lchild);			  //¿½±´×óÊ÷ÍêÁËÖ®ºó¿½±´ÓÒÊ÷
+					_CopyBinTree(&((*T1)->rchild), T2->rchild);		//¿½±´ÓÒÊ÷
+		  }
 }
