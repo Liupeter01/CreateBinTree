@@ -22,7 +22,7 @@ void DestroyBinTree(BinTree p)			//二叉树的销毁
 
 void _DestroyBinTree(BinNode* p)         //二叉树的销毁子函数
 {
-		  if (p->lchild != NULL && p->rchild != NULL)
+		  if (p!=NULL)
 		  {
 					BinNode* ptemp = p;
 					_DestroyBinTree(p->lchild);
