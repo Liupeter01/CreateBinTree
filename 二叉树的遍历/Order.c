@@ -60,17 +60,15 @@ void _PreOrderStack(BinNode* T)		//前序遍历栈版本子程序
                     Push_Stack(&stack, *p);       //将根节点入栈
                     while (!isEmpty(stack))
                     {
-                              BinNode temp;
-                              Pop_Stack(&stack, &temp);
-                              printf("%c",temp.data);
-                              BinNode* pointer = &temp;
-                              if (pointer->rchild != NULL)  //先入右孩子
+                              Pop_Stack(&stack, p);
+                              printf("%c",p->data);
+                              if (p->rchild != NULL)  //先入右孩子
                               {
-                                        Push_Stack(&stack, *(pointer->rchild));
+                                        Push_Stack(&stack, *(p->rchild));
                               }
-                              if (pointer->lchild != NULL)     //后入左孩子
+                              if (p->lchild != NULL)     //后入左孩子
                               {
-                                        Push_Stack(&stack, *(pointer->lchild));
+                                        Push_Stack(&stack, *(p->lchild));
                               }
                     }
                     DestroyLinkStack(&stack);     // 销毁
