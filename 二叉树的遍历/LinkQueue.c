@@ -60,7 +60,7 @@ void DisplayLinkQueue(LinkQueue Q)          //链式队列的输出
 		  printf("<Head:");
 		  while (ptr != NULL)
 		  {
-					printf("%d  ", ptr->data);
+					printf("%c", ptr->data.data);
 					ptr = ptr->next;
 		  }
 		  printf(">Tail\n");
