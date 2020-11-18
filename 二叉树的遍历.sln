@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "二叉树的创建", "二叉树的遍历\二叉树的创建.vcxproj", "{0B684DA6-0DC9-4A0D-BAF5-0A13576A3FB1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "二叉树的遍历", "二叉树的遍历\二叉树的创建.vcxproj", "{0B684DA6-0DC9-4A0D-BAF5-0A13576A3FB1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "特殊的后序遍历", "特殊的后序遍历\特殊的后序遍历.vcxproj", "{2DDBA103-C50F-4985-A6B2-E1563FBC08B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,14 @@ Global
 		{0B684DA6-0DC9-4A0D-BAF5-0A13576A3FB1}.Release|x64.Build.0 = Release|x64
 		{0B684DA6-0DC9-4A0D-BAF5-0A13576A3FB1}.Release|x86.ActiveCfg = Release|Win32
 		{0B684DA6-0DC9-4A0D-BAF5-0A13576A3FB1}.Release|x86.Build.0 = Release|Win32
+		{2DDBA103-C50F-4985-A6B2-E1563FBC08B9}.Debug|x64.ActiveCfg = Debug|x64
+		{2DDBA103-C50F-4985-A6B2-E1563FBC08B9}.Debug|x64.Build.0 = Debug|x64
+		{2DDBA103-C50F-4985-A6B2-E1563FBC08B9}.Debug|x86.ActiveCfg = Debug|Win32
+		{2DDBA103-C50F-4985-A6B2-E1563FBC08B9}.Debug|x86.Build.0 = Debug|Win32
+		{2DDBA103-C50F-4985-A6B2-E1563FBC08B9}.Release|x64.ActiveCfg = Release|x64
+		{2DDBA103-C50F-4985-A6B2-E1563FBC08B9}.Release|x64.Build.0 = Release|x64
+		{2DDBA103-C50F-4985-A6B2-E1563FBC08B9}.Release|x86.ActiveCfg = Release|Win32
+		{2DDBA103-C50F-4985-A6B2-E1563FBC08B9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

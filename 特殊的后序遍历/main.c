@@ -7,16 +7,9 @@ int main()
 
 		  char str[] = "ABC##DE##F##G#H##";
 		  CreateBinTreeByString(&T, str);		  //Ê÷µÄ×Ö·û´®´´½¨
-
-		  InOrder(T);
-		  printf("\n");
-		  InOrderStack(T);
-		  printf("\n");
-
-		  PreOrder(T);
-		  printf("\n");
-		  PreOrderStack(T);
 		
+		  PostOrderStack(T);
+		  printf("\n");
 
 		  DestroyBinTree(T.root);
 		  return 0;

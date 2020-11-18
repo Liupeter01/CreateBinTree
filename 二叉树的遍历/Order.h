@@ -32,8 +32,5 @@ void _PreOrderStack(BinNode* T);		//前序遍历栈版本子程序
 void InOrderStack(BinTree T);  //中序遍历栈版本
 void _InOrderStack(BinNode* T);  //中序遍历栈版本子程序
 
-void PostOrderStack(BinTree T);			//后序遍历栈版本
-void _PostOrderStack(BinNode* T);		//后序遍历栈版本子程序
-
 void LevelOrder(BinTree T);              //层次遍历
 void _LevelOrder(BinNode* T);			//层次遍历队列子程序

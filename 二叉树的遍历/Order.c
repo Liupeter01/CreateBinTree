@@ -45,6 +45,7 @@ void _PostOrder(BinNode* T)             //后序遍历子模块
           }
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void PreOrderStack(BinTree T)			//前序遍历栈版本
 {
           _PreOrderStack(T.root);       //调用子函数
@@ -86,7 +87,6 @@ void _InOrderStack(BinNode* T)   //中序遍历栈版本
           {
                     LinkStack stack;
                     InitLinkStack(&stack);        //模拟栈的初始化操作
-
                     BinNode* p = T;
                     while (p != NULL || !isEmpty(stack))
                     {
@@ -105,19 +105,6 @@ void _InOrderStack(BinNode* T)   //中序遍历栈版本
                               }
                     }
                     DestroyLinkStack(&stack);     //模拟栈的摧毁
-          }
-}
-
-void PostOrderStack(BinTree T)			//后序遍历栈版本
-{
-          _PostOrderStack(T.root);      //调用子函数
-}
-
-void _PostOrderStack(BinNode* T)		//后序遍历栈版本子程序
-{
-          if (T != NULL)         //T不为空
-          {
-
           }
 }
 
