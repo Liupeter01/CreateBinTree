@@ -8,27 +8,37 @@
 
 #define ElemType char
 
-typedef struct BinNode                  //½áµã¶¨Òå
+typedef struct BinNode                  //ç»“ç‚¹å®šä¹‰
 {
-          ElemType data;				//Êı¾İÓò
-          struct BinNode* lchild;       //Ö¸ÕëÓò£¬×ó×ÓÊ÷
-          struct BinNode* rchild;       //Ö¸ÕëÓò£¬ÓÒ×ÓÊ÷
+          ElemType data;				//æ•°æ®åŸŸ
+          struct BinNode* lchild;       //æŒ‡é’ˆåŸŸï¼Œå·¦å­æ ‘
+          struct BinNode* rchild;       //æŒ‡é’ˆåŸŸï¼Œå³å­æ ‘
 }BinNode;
 
 typedef struct BinTree
 {
-          BinNode* root;                   //¸ù½Úµã
-          ElemType stopflag;            //Í£Ö¹±ê¼Ç
+          BinNode* root;                   //æ ¹èŠ‚ç‚¹
+          ElemType stopflag;            //åœæ­¢æ ‡è®°
 }BinTree;
 
-BinNode* CreateBinNode(ElemType x);               //¶ş²æÊ÷µÄ½áµã´´½¨º¯Êı
+BinNode* CreateBinNode(ElemType x);               //äºŒå‰æ ‘çš„ç»“ç‚¹åˆ›å»ºå‡½æ•°
 
-/*¶ş²æÊ÷µÄ»ù±¾²Ù×÷*/
-void InitBinTree(BinTree* T, ElemType stopflag);            //¶ş²æÊ÷µÄ³õÊ¼»¯
-void DestroyBinTree(BinNode* p);         //¶ş²æÊ÷µÄÏú»Ù
+/*äºŒå‰æ ‘çš„åŸºæœ¬æ“ä½œ*/
+void InitBinTree(BinTree* T, ElemType stopflag);            //äºŒå‰æ ‘çš„åˆå§‹åŒ–
+void DestroyBinTree(BinNode* p);         //äºŒå‰æ ‘çš„é”€æ¯
 
-/*¶ş²æÊ÷µÄ´´½¨*/
-void CreateBinTreeByString(BinTree* T, char* str);          //¸ù¾İ×Ö·û´®´´½¨
-void CreateBinTree(BinTree *T);          //¶ş²æÊ÷µÄ´´½¨µÄÍâ²ãº¯Êı
-static void CreateBiTNode(BinTree* T, BinNode** p, const char* str);  //¶ş²æÊ÷´´½¨º¯Êı
-/*µ±´«ÈëµÄstrÎªNULLµÄÊ±ºò²ÉÓÃÊÖ¶¯ÊäÈë£¬·ÇNULLÎª×Ô¶¯*/
+/*äºŒå‰æ ‘çš„é«˜çº§åˆ›å»º*/
+void CreateBinTreeByPreInOrder(BinTree* T, char* PreOrder, char* InOrder, int NodeSize);       //é€šè¿‡å…ˆåºåºåˆ—å’Œä¸­åºåºåˆ—å’Œç»“ç‚¹ä¸ªæ•°æ¢å¤ä¸€é¢—äºŒå‰æ ‘
+static void _CreateBinTreeByPreInOrder(BinNode** p, char* PreOrder, char* InOrder, int NodeSize);      //äºŒå‰æ ‘é«˜çº§åˆ›å»ºå­å‡½æ•°
+
+void CreateBinTreeByPrePostOrder(BinTree* T, char* PreOrder, char* PostOrder, int NodeSize);       //é€šè¿‡å…ˆåºåºåˆ—å’Œååºåºåˆ—å’Œç»“ç‚¹ä¸ªæ•°æ¢å¤ä¸€é¢—äºŒå‰æ ‘
+static void _CreateBinTreeByPrePostOrder(BinNode** p, char* PreOrder, char* PostOrder, int NodeSize);      //äºŒå‰æ ‘é«˜çº§åˆ›å»ºå­å‡½æ•°
+
+void CreateBinTreeByInPostOrder(BinTree* T, char* InOrder, char* PostOrder, int NodeSize);       //é€šè¿‡ä¸­åºåºåˆ—å’Œååºåºåˆ—å’Œç»“ç‚¹ä¸ªæ•°æ¢å¤ä¸€é¢—äºŒå‰æ ‘
+static void _CreateBinTreeByInPostOrder(BinNode** p, char* InOrder, char* PostOrder, int NodeSize);      //äºŒå‰æ ‘é«˜çº§åˆ›å»ºå­å‡½æ•°
+
+/*äºŒå‰æ ‘çš„åˆ›å»º*/
+void CreateBinTreeByString(BinTree* T, char* str);          //æ ¹æ®å­—ç¬¦ä¸²åˆ›å»º
+void CreateBinTree(BinTree *T);          //äºŒå‰æ ‘çš„åˆ›å»ºçš„å¤–å±‚å‡½æ•°
+static void CreateBiTNode(BinTree* T, BinNode** p, const char* str);  //äºŒå‰æ ‘åˆ›å»ºå‡½æ•°
+/*å½“ä¼ å…¥çš„strä¸ºNULLçš„æ—¶å€™é‡‡ç”¨æ‰‹åŠ¨è¾“å…¥ï¼ŒéNULLä¸ºè‡ªåŠ¨*/
