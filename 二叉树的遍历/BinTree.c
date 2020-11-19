@@ -1,6 +1,6 @@
 #include"BinTree.h"
 
-BinNode* CreateBinNode(ElemType x)             //¶þ²æÊ÷µÄ½áµã´´½¨º¯Êý
+BinNode* CreateBinNode(ElemType x)             //äºŒå‰æ ‘çš„ç»“ç‚¹åˆ›å»ºå‡½æ•°
 {
 		  BinNode* s = (BinNode*)malloc(sizeof(BinNode));
 		  assert(s != NULL);
@@ -9,13 +9,13 @@ BinNode* CreateBinNode(ElemType x)             //¶þ²æÊ÷µÄ½áµã´´½¨º¯Êý
 		  return s;
 }
 
-void InitBinTree(BinTree* T, ElemType stopflag)        //¶þ²æÊ÷µÄ³õÊ¼»¯
+void InitBinTree(BinTree* T, ElemType stopflag)        //äºŒå‰æ ‘çš„åˆå§‹åŒ–
 {
-		  T->root = NULL;	  //³õÊ¼»¯
-		  T->stopflag = stopflag;				  //ÒÔstopflag×÷Îª³ÌÐòµÄ½áÊø·ûºÅ
+		  T->root = NULL;	  //åˆå§‹åŒ–
+		  T->stopflag = stopflag;				  //ä»¥stopflagä½œä¸ºç¨‹åºçš„ç»“æŸç¬¦å·
 }
 
-void DestroyBinTree(BinNode* p)         //¶þ²æÊ÷µÄÏú»Ù
+void DestroyBinTree(BinNode* p)         //äºŒå‰æ ‘çš„é”€æ¯
 {
 		  if (p->lchild != NULL && p->rchild != NULL)
 		  {
@@ -26,23 +26,23 @@ void DestroyBinTree(BinNode* p)         //¶þ²æÊ÷µÄÏú»Ù
 		  }
 }
 
-void CreateBinTreeByString(BinTree* T, char* str)          //¸ù¾Ý×Ö·û´®´´½¨
+void CreateBinTreeByString(BinTree* T, char* str)          //æ ¹æ®å­—ç¬¦ä¸²åˆ›å»º
 {
 		  CreateBiTNode(T, &(T->root), str);
 }
 
-void CreateBinTree(BinTree* T)          //¶þ²æÊ÷µÄ´´½¨
+void CreateBinTree(BinTree* T)          //äºŒå‰æ ‘çš„åˆ›å»º
 {
-		  printf("ÇëÊäÈë¶þ²æÊ÷´´½¨µÄÐòÁÐ£º>");
+		  printf("è¯·è¾“å…¥äºŒå‰æ ‘åˆ›å»ºçš„åºåˆ—ï¼š>");
 		  CreateBiTNode(T, &(T->root), NULL);
 }
 
-//¶þ²æÊ÷´´½¨µÄºËÐÄµÝ¹éº¯Êý£¬ÐÞ¸ÄÖ¸Õë±ØÐë´«Èë¶þ¼¶Ö¸Õë
-//µ±´«ÈëµÄstrÎªNULLµÄÊ±ºò²ÉÓÃÊÖ¶¯ÊäÈë£¬·ÇNULLÎª×Ô¶¯2
+//äºŒå‰æ ‘åˆ›å»ºçš„æ ¸å¿ƒé€’å½’å‡½æ•°ï¼Œä¿®æ”¹æŒ‡é’ˆå¿…é¡»ä¼ å…¥äºŒçº§æŒ‡é’ˆ
+//å½“ä¼ å…¥çš„strä¸ºNULLçš„æ—¶å€™é‡‡ç”¨æ‰‹åŠ¨è¾“å…¥ï¼ŒéžNULLä¸ºè‡ªåŠ¨2
 static void CreateBiTNode(BinTree* T, BinNode** p,const char *str)      
 {
-		  ElemType data = 0;	  //ÊäÈëµÄÊý¾Ý
-		  if (str == NULL)	  //ÊÖ¶¯ÊäÈë
+		  ElemType data = 0;	  //è¾“å…¥çš„æ•°æ®
+		  if (str == NULL)	  //æ‰‹åŠ¨è¾“å…¥
 		  {
 					scanf("%c", &data);
 					if (data != T->stopflag)
@@ -55,12 +55,82 @@ static void CreateBiTNode(BinTree* T, BinNode** p,const char *str)
 		  else
 		  {
 					static int counter = 0;
-					data = str[counter++];	//µ½ÏÂÒ»¸ö×Ö·û
+					data = str[counter++];	//åˆ°ä¸‹ä¸€ä¸ªå­—ç¬¦
 					if (data != T->stopflag && data != '\0')
 					{
 							  *p = CreateBinNode(data);
 							  CreateBiTNode(T, &((*p)->lchild), str);
 							  CreateBiTNode(T, &((*p)->rchild), str);
 					}
+		  }
+}
+
+void CreateBinTreeByPreInOrder(BinTree* T, char* PreOrder, char* InOrder, int NodeSize)       //é€šè¿‡å…ˆåºåºåˆ—å’Œä¸­åºåºåˆ—å’Œç»“ç‚¹ä¸ªæ•°æ¢å¤ä¸€é¢—äºŒå‰æ ‘
+{
+		  _CreateBinTreeByPreInOrder(&(T->root), PreOrder, InOrder, NodeSize);
+}
+
+static void _CreateBinTreeByPreInOrder(BinNode** p, char* PreOrder, char* InOrder, int NodeSize)     //äºŒå‰æ ‘é«˜çº§åˆ›å»ºå­å‡½æ•°
+{
+		  if (NodeSize == 0)			//ç»“ç‚¹æ•°é‡ä¸º0
+		  {
+					*p = NULL;			//æ ‘ä¸ºç©º
+		  }
+		  else
+		  {
+					char root_Pre = *PreOrder;		  //å…ˆåºåºåˆ—çš„æ ¹æ˜¯é¦–å…ƒç´ 
+					int pos = 0;	  //åœ¨ä¸­åºåºåˆ—ä¸­æ ¹ç»“ç‚¹çš„ä¸ºæ­¢
+					while (InOrder[pos] != '\0' && InOrder[pos++] != root_Pre);		//æŸ¥æ‰¾
+					pos -= 1;			//posä¼šæ¯”ä¹‹å‰å¤š1
+					*p = CreateBinNode(root_Pre);
+					_CreateBinTreeByPreInOrder(&((*p)->lchild), PreOrder + 1, InOrder, pos);	  //å·¦åˆ’åˆ†
+					_CreateBinTreeByPreInOrder(&((*p)->rchild), PreOrder + pos + 1, InOrder + pos + 1, NodeSize - pos - 1); //å³åˆ’åˆ†
+		  }
+}
+
+void CreateBinTreeByPrePostOrder(BinTree* T, char* PreOrder, char* PostOrder, int NodeSize)     //é€šè¿‡å…ˆåºåºåˆ—å’ŒåŽåºåºåˆ—å’Œç»“ç‚¹ä¸ªæ•°æ¢å¤ä¸€é¢—äºŒå‰æ ‘
+{
+		  _CreateBinTreeByPrePostOrder(&(T->root), PreOrder, PostOrder, NodeSize);
+}
+
+static void _CreateBinTreeByPrePostOrder(BinNode** p, char* PreOrder, char* PostOrder, int NodeSize)    //äºŒå‰æ ‘é«˜çº§åˆ›å»ºå­å‡½æ•°
+{
+		  if (!NodeSize)	  //ç»“ç‚¹æ•°é‡ä¸º0
+		  {
+					 *p = NULL;			//æ ‘ä¸ºç©º
+		  }
+		  else
+		  {
+					char root_Pre = *PreOrder;		  //åŽ»å…ˆåºåºåˆ—é¦–å…ƒç´ ä¸ºæ ¹èŠ‚ç‚¹
+					int pos = 0;
+					while (PostOrder[pos] != '\0' && PostOrder[pos++] != root_Pre);
+					pos--;	  //å¼¥è¡¥å¤šåŠ çš„ä¸‹æ ‡
+					*p = CreateBinNode(root_Pre);
+					_CreateBinTreeByPrePostOrder(&((*p)->lchild), PreOrder + 1, PostOrder, pos);	   //å·¦åˆ’åˆ†
+					_CreateBinTreeByPrePostOrder(&((*p)->rchild), PreOrder + pos + 1, PostOrder + pos + 1, NodeSize - pos - 1);	   //å³åˆ’åˆ†
+		  }
+}
+
+void CreateBinTreeByInPostOrder(BinTree* T, char* InOrder, char* PostOrder, int NodeSize)     //é€šè¿‡ä¸­åºåºåˆ—å’ŒåŽåºåºåˆ—å’Œç»“ç‚¹ä¸ªæ•°æ¢å¤ä¸€é¢—äºŒå‰æ ‘
+{
+		  
+		  _CreateBinTreeByInPostOrder(&(T->root), InOrder, PostOrder, NodeSize);
+}
+
+static void _CreateBinTreeByInPostOrder(BinNode** p, char* InOrder, char* PostOrder, int NodeSize)      //äºŒå‰æ ‘é«˜çº§åˆ›å»ºå­å‡½æ•°
+{
+		  if (!NodeSize)	  //ç»“ç‚¹æ•°é‡ä¸º0
+		  {
+					*p = NULL;			//æ ‘ä¸ºç©º
+		  }
+		  else
+		  {
+					char root_Post = *(PostOrder + NodeSize - 1);		  //åŽåºæœ€åŽä¸€ä¸ªç»“ç‚¹æ˜¯æ ¹èŠ‚ç‚¹
+					int pos = 0;
+					while (InOrder[pos] != '\0' && InOrder[pos++] != root_Post);
+					pos--;	  //å¼¥è¡¥å¤šåŠ çš„ä¸‹æ ‡
+					*p = CreateBinNode(root_Post);
+					_CreateBinTreeByInPostOrder(&((*p)->rchild), InOrder + pos + 1, PostOrder + pos, NodeSize - pos - 1);
+					_CreateBinTreeByInPostOrder(&((*p)->lchild), InOrder, PostOrder, pos);
 		  }
 }
